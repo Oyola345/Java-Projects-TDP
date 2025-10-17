@@ -29,8 +29,10 @@ public class Supermercado {
     }
     
     public void registrarProd(Producto unProd){
-        productos[dimL/estantes][dimL%estantes]=unProd;
-        dimL++;
+        if(dimL<dimF){
+            productos[dimL/estantes][dimL%estantes]=unProd;
+            dimL++;            
+        }
     }
     
     public String listarMenX(String M, int X){
