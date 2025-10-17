@@ -58,24 +58,38 @@ public class Empresa {
     }
     
     public int sectorMasSeguros(){
-        int sector=0, secAct, cant, max=-1, maxSect=-1, i=0;
-        while(i<dimL){
+        int s, b, cant, max=-1, maxSect=-1;
+        for(s=0;s<sectores;s++){
             cant=0;
-            secAct=sector;
-            while((i<dimL) && (secAct==sector)){
-                if(espacio[sector][i%bauleras].getSeguroAd()){
+            for(b=0;b<bauleras;b++){
+                if(espacio[s][b]!= null && espacio[s][b].getSeguroAd()){
                     cant++;
                 }
-                i++;
-                sector=i/bauleras;
-            } 
+            }
             if(cant>max){
                 max=cant;
-                maxSect=secAct;
+                maxSect=s;
             }
         }
-        return maxSect++;//porque empiezan desde 0 los sectores en la matriz
+        return maxSect+1;//porque empiezan desde 0 los sectores en la matriz
     }
+        
+//        int sector=0, secAct, cant, max=-1, maxSect=-1, i=0;
+//        while(i<dimL){
+//            cant=0;
+//            secAct=sector;
+//            while((i<dimL) && (secAct==sector)){
+//                if(espacio[sector][i%bauleras].getSeguroAd()){
+//                    cant++;
+//                }
+//                i++;
+//                sector=i/bauleras;
+//            } 
+//            if(cant>max){
+//                max=cant;
+//                maxSect=secAct;
+//            }
+//        }
 
     public String toString() {
         String aux="Empresa: " + nombre + " - " + direccion +
